@@ -14,7 +14,7 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 	<div class="container-fluid mt-3">
-		<h3>Listagem de Corridas de Transporte Pet .</h3>
+		<h3>Listagem de Corridas Pet.</h3>
 		
 		<table class="table table-striped table-success">
 			<thead>
@@ -30,13 +30,14 @@
 					<th>Tipo Animal</th>
 					<th>Acompanhante Humano</th>
 					<th>Aguardar Consulta</th>
+					<th>Usuario</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="p" items="${listaPet}">
 				<tr>
-					<td>${p.idCorrida}</td>
+					<td>${p.id}</td>
 					<td>${p.codigo}</td>
 					<td>${p.dataAgendada}</td>
 					<td>${p.tipoCorrida}</td>
@@ -47,7 +48,8 @@
 					<td>${p.tipoAnimal}</td>
 					<td>${p.acompanhanteHumano}</td>
 					<td>${p.aguardarConsulta}</td>
-					<td><a href="/pet/${p.codigo}/excluir">Excluir</a></td>
+					<td>${p.usuario.nomeUsuario}</td>
+					<td><a href="/pet/${p.id}/excluir">Excluir</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.infnet.appagendatransporte.model.negocio.Motorista;
+import br.edu.infnet.appagendatransporte.model.negocio.Pet;
 
 @Repository
-public interface MotoristaRepository extends CrudRepository<Motorista,Integer>{
-	@Query("from Motorista m where m.usuario.id= :userid")
-	public List<Motorista> obterMotoristas(Integer userid);
+public interface PetRepository extends CrudRepository<Pet,Integer>{
+	@Query("from Pet p where p.usuario.id= :userid")
+	public List<Pet> obterLista(Integer userid);
 }

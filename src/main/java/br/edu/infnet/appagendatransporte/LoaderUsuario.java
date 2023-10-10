@@ -9,20 +9,19 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appagendatransporte.model.negocio.Motorista;
 import br.edu.infnet.appagendatransporte.model.negocio.Usuario;
-import br.edu.infnet.appagendatransporte.model.service.MotoristaService;
+import br.edu.infnet.appagendatransporte.model.service.UsuarioService;
 
-@Order(2)
+@Order(1)
 @Component
-public class LoaderMotorista implements ApplicationRunner {
+public class LoaderUsuario implements ApplicationRunner {
 	@Autowired
-	private MotoristaService motoristaService;
+	private UsuarioService usuarioService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		FileReader file = new FileReader("./arquivos/motorista.txt");
+		FileReader file = new FileReader("./arquivos/usuario.txt");
 		BufferedReader leitura = new BufferedReader(file);
 
 		String linha = leitura.readLine();
@@ -30,12 +29,12 @@ public class LoaderMotorista implements ApplicationRunner {
 
 		while (linha != null) {
 			campos = linha.split(";");
+			Usuario usuario = new Usuario();
+			usuario.setEmail(campos[0]);
+			usuario.setNomeUsuario(campos[1]);
+			usuario.setSenha(campos[2]);
 
-			Motorista motorista = new Motorista(Float.valueOf(campos[0]), campos[1], campos[2], campos[3], campos[4]);
-
-			motorista.setUsuario(new Usuario(1));
-
-			motoristaService.incluir(motorista);
+			usuarioService.incluir(usuario);
 			linha = leitura.readLine();
 		}
 

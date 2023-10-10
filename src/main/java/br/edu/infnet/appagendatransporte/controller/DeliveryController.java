@@ -1,46 +1,43 @@
 package br.edu.infnet.appagendatransporte.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appagendatransporte.model.negocio.Delivery;
-
+import br.edu.infnet.appagendatransporte.model.negocio.Usuario;
+import br.edu.infnet.appagendatransporte.model.service.DeliveryService;
 
 @Controller
 public class DeliveryController {
-	
-	private Map<String,Delivery> mapaDelivery = new HashMap<String,Delivery>(); 
-	
-	public Collection<Delivery> obterDeliveries(){
-		return mapaDelivery.values();
-	}
-
-	
-	public void incluir(Delivery delivery){
-		mapaDelivery.put(delivery.getCodigo(), delivery);
-		System.out.println(">>>: [Delivery] Inclusão realizada com sucesso: " + delivery);
-	}
-	
-	public void excluir(String codigo){
-		mapaDelivery.remove(codigo);
-	}
+	@Autowired
+	private DeliveryService deliveryService;
 	
 	@GetMapping(value = "/delivery/lista")
-	public String telaDelivery(Model model) {
-		
-		model.addAttribute("listaDelivery", obterDeliveries());
+	public String telaLista(Model model, @SessionAttribute("usuariodisplay") Usuario usuario) {		
+		model.addAttribute("listaDelivery", deliveryService.obterLista(usuario));
 		return "delivery/lista";
 	}
 	
-	@GetMapping(value = "/delivery/{codigo}/excluir")
-	public String exclusao(@PathVariable String codigo) {
-		excluir(codigo);
+	@GetMapping(value = "/delivery/cadastro")
+	public String telaCadastro() {
+		return "delivery/cadastro";
+	}
+	
+	@PostMapping(value="/delivery/incluir")
+	public String incluir(Delivery delivery, @SessionAttribute("usuariodisplay") Usuario usuario) {
+		delivery.setUsuario(usuario);
+		deliveryService.incluir(delivery);
+		return "redirect:/delivery/lista";
+	}
+	
+	@GetMapping(value = "/delivery/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
+		deliveryService.excluir(id);
 		return "redirect:/delivery/lista";
 	}
 }

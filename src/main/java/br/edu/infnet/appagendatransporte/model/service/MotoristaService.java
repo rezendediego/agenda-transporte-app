@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appagendatransporte.model.negocio.Motorista;
+import br.edu.infnet.appagendatransporte.model.negocio.Usuario;
 import br.edu.infnet.appagendatransporte.model.repository.MotoristaRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class MotoristaService {
 		return (Collection<Motorista>) motoristaRepository.findAll();
 	}
 
+	public Collection<Motorista> obterMotoristas(Usuario usuario) {
+		return (Collection<Motorista>) motoristaRepository.obterMotoristas(usuario.getId());
+	}
 	public void incluir(Motorista motorista) {
 		motoristaRepository.save(motorista);
 	}

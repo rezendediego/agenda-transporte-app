@@ -1,12 +1,16 @@
 package br.edu.infnet.appagendatransporte.model.negocio;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.Endereco;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.TipoCorrida;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.TipoProduto;
 
+@Entity
+@Table(name="TDelivery")
 public class Delivery extends Corrida {
 	private TipoProduto tipoProduto;
 	private Boolean seguroProduto;
@@ -17,7 +21,7 @@ public class Delivery extends Corrida {
 	}
 	
 	public Delivery(String codigo,
-					Optional<LocalDateTime> dataAgendada, 
+					LocalDateTime dataAgendada, 
 					Endereco enderecoOrigem,
 					Endereco enderecoDestino,
 					int quantidadePassageiros,

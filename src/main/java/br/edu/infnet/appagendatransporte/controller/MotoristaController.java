@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appagendatransporte.model.negocio.Motorista;
+import br.edu.infnet.appagendatransporte.model.negocio.Usuario;
 import br.edu.infnet.appagendatransporte.model.service.MotoristaService;
 
 @Controller
@@ -16,8 +18,8 @@ public class MotoristaController {
 	private MotoristaService motoristaService;
 	
 	@GetMapping(value = "/motorista/lista")
-	public String telaLista(Model model) {		
-		model.addAttribute("listaMotorista", motoristaService.obterMotoristas());
+	public String telaLista(Model model, @SessionAttribute("usuariodisplay") Usuario usuario) {		
+		model.addAttribute("listaMotorista", motoristaService.obterMotoristas(usuario));
 		return "motorista/lista";
 	}
 	
@@ -27,7 +29,8 @@ public class MotoristaController {
 	}
 	
 	@PostMapping(value="/motorista/incluir")
-	public String incluir(Motorista motorista) {
+	public String incluir(Motorista motorista, @SessionAttribute("usuariodisplay") Usuario usuario) {
+		motorista.setUsuario(usuario);
 		motoristaService.incluir(motorista);
 		return "redirect:/motorista/lista";
 	}

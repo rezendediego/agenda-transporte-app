@@ -1,16 +1,40 @@
 package br.edu.infnet.appagendatransporte.model.negocio;
 
-import org.springframework.stereotype.Controller;
+import java.util.List;
 
-@Controller
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TUsuario")
 public class Usuario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nomeUsuario;
 	private String email;
 	private String senha;
+	
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Motorista> motoristas;
+	
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Corrida> corridas;
 
 	public Usuario() {
 
+	}
+	
+	public Usuario(Integer id) {
+		this.id =id;
 	}
 
 	public Integer getId() {
@@ -43,6 +67,26 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	
+	
+	public List<Motorista> getMotoristas() {
+		return motoristas;
+	}
+
+	public void setMotoristas(List<Motorista> motoristas) {
+		this.motoristas = motoristas;
+	}
+	
+	
+	
+	public List<Corrida> getCorridas() {
+		return corridas;
+	}
+
+	public void setCorridas(List<Corrida> corridas) {
+		this.corridas = corridas;
 	}
 
 	@Override

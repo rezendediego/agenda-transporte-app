@@ -1,7 +1,5 @@
 package br.edu.infnet.appagendatransporte.model.negocio;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,12 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name="TMotorista")
+@Table(name = "TMotorista")
 public class Motorista {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -25,27 +21,27 @@ public class Motorista {
 	private String celularMotorista;
 	private String tipoCarro;
 	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+
 	public Motorista() {
-	
+
 	}
-	
-	public Motorista(float qualificacaoMotorista,String cpf, String nomeMotorista,String celularMotorista,String tipoCarro ) {
+
+	public Motorista(float qualificacaoMotorista, String cpf, String nomeMotorista, String celularMotorista,
+			String tipoCarro) {
 		this.qualificacaoMotorista = qualificacaoMotorista;
 		this.cpf = cpf;
-		this.nomeMotorista =nomeMotorista;
+		this.nomeMotorista = nomeMotorista;
 		this.celularMotorista = celularMotorista;
 		this.tipoCarro = tipoCarro;
 	}
-	
+
 	@Override
 	public String toString() {
-		return  String.format("Motorista: %d, %.2f, %s, %s, %s, %s",
-				id,
-				qualificacaoMotorista,
-				cpf,
-				nomeMotorista, 
-				celularMotorista, 
-				tipoCarro);
+		return String.format("Motorista: %d, %.2f, %s, %s, %s, %s", id, qualificacaoMotorista, cpf, nomeMotorista,
+				celularMotorista, tipoCarro);
 	}
 
 	public Integer getId() {
@@ -96,6 +92,14 @@ public class Motorista {
 		this.tipoCarro = tipoCarro;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	
 
 }

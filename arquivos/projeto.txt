@@ -5,6 +5,7 @@ A;qualificacaoMotorista;float;Armazena qualificação acumulada depois de corrid
 A;nomeMotorista;String;Nome do Motorista
 A;celularMotorista;String;Numero contato telefonico do Motorista
 A;tipoCarro;String;Armazena marca e modelo de carro cadastrado
+A;usuario;Usuario;Usuario responsável pelo cadastro do Motorista
 C;Usuario (Classe de Admin)
 A;nome;String;Nome do Usuario
 A;email;String;E-mail do Usuario
@@ -17,6 +18,7 @@ A;enderecoOrigem;Endereco;Representa o destino inicial da corrida
 A;enderecoDestino;Endereco;Representa o destino final da corrida
 A;quantidadePassageiros;int;Representa quantidade de passageiros que estarão presentes na corrida
 A;precoMinimo;BigDecimal;Expressa o preco minimo da corrida agendada de acordo com tipo
+A;usuario;Usuario;Usuario responsável pelo cadastro da Corrida
 C;Delivery (Classe Filha extends Corrida)
 A;tipoProduto;TipoProduto;Armazena informação sobre o tipo de produto: COMIDA,CASA_JARDIM, FRAGIL, ELETROELETRONICO, INFLAMAVEL
 A;seguroProduto;Boolean;Reflete a contratação de seguro contratado para o produto transportado

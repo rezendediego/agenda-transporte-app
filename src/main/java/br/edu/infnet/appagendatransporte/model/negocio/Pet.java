@@ -1,12 +1,16 @@
 package br.edu.infnet.appagendatransporte.model.negocio;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.Endereco;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.TipoAnimal;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.TipoCorrida;
 
+@Entity
+@Table(name="TPet")
 public class Pet extends Corrida {
 	private TipoAnimal tipoAnimal; 
 	private Boolean acompanhanteHumano; 
@@ -17,7 +21,7 @@ public class Pet extends Corrida {
 	}
 	
 	public Pet(String codigo,
-			Optional<LocalDateTime> dataAgendada,
+			LocalDateTime dataAgendada,
 			Endereco enderecoOrigem,
 			Endereco enderecoDestino,
 			int quantidadePassageiros,

@@ -32,6 +32,7 @@
 					<th>Nome Motorista</th>
 					<th>Celular Motorista</th>
 					<th>Tipo Carro</th>
+					<th>Usuario</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -44,6 +45,7 @@
 					<td>${m.nomeMotorista}</td>
 					<td>${m.celularMotorista}</td>
 					<td>${m.tipoCarro}</td>
+					<td>${m.usuario.nomeUsuario}</td>
 					<td><a href="/motorista/${m.id}/excluir">Excluir</a></td>
 				</tr>
 				</c:forEach>

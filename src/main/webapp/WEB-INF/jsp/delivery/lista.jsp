@@ -30,13 +30,14 @@
 					<th>Tipo Produto</th>
 					<th>Seguro Produto</th>
 					<th>Responsavel Recebimento</th>
+					<th>Usuario</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="d" items="${listaDelivery}">
 				<tr>
-					<td>${d.idCorrida}</td>
+					<td>${d.id}</td>
 					<td>${d.codigo}</td>
 					<td>${d.dataAgendada}</td>
 					<td>${d.tipoCorrida}</td>
@@ -47,7 +48,8 @@
 					<td>${d.tipoProduto}</td>
 					<td>${d.seguroProduto}</td>
 					<td>${d.responsavelRecebimento}</td>
-					<td><a href="/delivery/${d.codigo}/excluir">Excluir</a></td>
+					<td>${d.usuario.nomeUsuario}</td>
+					<td><a href="/delivery/${d.id}/excluir">Excluir</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

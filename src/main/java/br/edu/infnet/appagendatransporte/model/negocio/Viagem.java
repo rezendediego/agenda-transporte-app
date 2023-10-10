@@ -1,12 +1,16 @@
 package br.edu.infnet.appagendatransporte.model.negocio;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.DistanciaViagem;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.Endereco;
 import br.edu.infnet.appagendatransporte.model.negocio.utilitarios.TipoCorrida;
 
+@Entity
+@Table(name="TViagem")
 public class Viagem extends Corrida {
 	private Boolean areaDeRisco; 
 	private Boolean possuiBagagem;
@@ -17,7 +21,7 @@ public class Viagem extends Corrida {
 	}
 	
 	public Viagem(String codigo,
-			Optional<LocalDateTime> dataAgendada, 
+			LocalDateTime dataAgendada, 
 			Endereco enderecoOrigem,
 			Endereco enderecoDestino,
 			int quantidadePassageiros,
