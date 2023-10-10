@@ -1,0 +1,10 @@
+4.3;556.596.750-34;Joao Firmino;21993451543;Volkswagen Gol
+2.8;751.667.110-09;Jose Ferreira;11971510141;Fiat Strada
+3.1;724.885.650-91;Adao Gomes;81980051270;Chevrolet Onix
+4.7;201.444.890-66;Vicente Carvalho;49968757777;Ford Ka
+4.9;877.372.990-68;Martin Gutierrez;51992352800;Toyota Corolla
+4.0;890.538.630-01;Homero Rosas;33961251138;Hyundai HB20
+3.5;655.521.380-90;Vinicius Lopes;12974451212;Renault Kwid
+1.2;027.519.117-65;Correia Camargo;24992266581;Nissan Kicks
+5.0;044.034.558-83;Arminio Verde;22989952426;Honda Civic
+5.0;483.811.528-87;Silva Jorge;21994151186;Jeep Renegade

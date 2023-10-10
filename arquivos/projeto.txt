@@ -1,0 +1,38 @@
+P;App Agendamento Transporte; Projeto de Gestão de Calendário de Motoristas
+C;Motorista (Classe de Associação)
+A;id;Integer;Identificador único do Motorista
+A;qualificacaoMotorista;float;Armazena qualificação acumulada depois de corridas realizadas e varia segundo tipo float de duas casas decimais desde 1.00 até 5.00
+A;nomeMotorista;String;Nome do Motorista
+A;celularMotorista;String;Numero contato telefonico do Motorista
+A;tipoCarro;String;Armazena marca e modelo de carro cadastrado
+C;Usuario (Classe de Admin)
+A;nome;String;Nome do Usuario
+A;email;String;E-mail do Usuario
+A;senha;String;Senha do Usuario
+C;Corrida (Classe Abstrata)
+A;id;Integer;Identificador único de corrida
+A;dataAgendada;Optional&lt;LocalDateTime&gt;Armazena a Data e Horario da Corrida Agendada. Valor vazio pode representar uma corrida contratada sem data e horario definido para ocorrer
+A;tipoCorrida;TipoCorrida;Pode assumir valores: DELIVERY, PET ou VIAGEM
+A;enderecoOrigem;Endereco;Representa o destino inicial da corrida
+A;enderecoDestino;Endereco;Representa o destino final da corrida
+A;quantidadePassageiros;int;Representa quantidade de passageiros que estarão presentes na corrida
+A;precoMinimo;BigDecimal;Expressa o preco minimo da corrida agendada de acordo com tipo
+C;Delivery (Classe Filha extends Corrida)
+A;tipoProduto;TipoProduto;Armazena informação sobre o tipo de produto: COMIDA,CASA_JARDIM, FRAGIL, ELETROELETRONICO, INFLAMAVEL
+A;seguroProduto;Boolean;Reflete a contratação de seguro contratado para o produto transportado
+A;responsavelRecebimento;String;Nome do destinatário responsável pelo recebimento do produto
+C;Pet (Classe Filha extends Corrida)
+A;tipoAnimal;TipoAnimal;Armazena informação sobre o tipo de pet transportado: CACHORRO, GATO, OUTROS
+A;acompanhanteHumano;Boolean;Reflete se haverá ou não acompanhamento de tutor ao longo da corrida
+A;aguardarConsulta;Boolean;Reflete se haverá ou não necessidade do motorista aguardar o final da consulta e retornar o pet e/ou acompanhante para ponto inicial
+C;Viagem (Classe Filha extends Corrida)
+A;areaDeRisco;Boolean;Caso seja area de risco é facultado ao Motorista aceitar ou não a viagem
+A;possuiBagagem;Boolean;Reflete se o carro do Motorista é adequado ou não para a respectiva viagem
+A;distanciaViagem;DistanciaViagem;Armazena distancia de viagem: CURTA MEDIA LONGA que culminará em taxas extras de combustivel
+C;AgendamentoCorrida  (Classe Principal)
+A;id;Integer;Identificador único de agendamento de corrida
+A;dataAgendamento;LocalDateTime;Armazena a Data e Horario do agendamento
+A;listaCorridaAgendada;List<Corrida>;Relacao 1:n Lista de Objetos Corrida com as informações da corrida ou corridas agendadas para um motorista
+A;confirmacaoMotorista;Boolean;Expressa se o Motorista aceita ou não a corrida
+A;motorista;Motorista;Relacao 1:1 reflete a agenda de um motorista atraves de um Objeto Motorista
+A;nomeUsuario;String;Nome do Usuário
